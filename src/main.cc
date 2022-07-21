@@ -72,7 +72,7 @@ void loop() {
 
   const int btn_h_state = digitalRead(BTN_H_PIN);
   if (btn_h_state == LOW && last_btn_h_state == HIGH) {
-    const uint8_t hour = int16_t{now.hour()} + 1 % 24;
+    const uint8_t hour = (int16_t{now.hour()} + 1) % 24;
     const DateTime next{2000, 1, 1, hour, now.minute(), 0};
     rtc.adjust(next);
   }
@@ -80,7 +80,7 @@ void loop() {
 
   const int btn_m_state = digitalRead(BTN_M_PIN);
   if (btn_m_state == LOW && last_btn_m_state == HIGH) {
-    const uint8_t min = int16_t{now.minute()} + 1 % 60;
+    const uint8_t min = (int16_t{now.minute()} + 1) % 60;
     const DateTime next{2000, 1, 1, now.hour(), min, 0};
     rtc.adjust(next);
   }
